@@ -12,7 +12,7 @@ canvas.addEventListener("mousedown", () => {
 });
 
 canvas.addEventListener("mousemove", e => {
-    if
+    if 
 })
 
 
