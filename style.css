@@ -1,0 +1,58 @@
+body{
+    height: 100%;
+    background-color: lightslategray;
+}
+
+h1, h3 {
+    font-family: "Oxygen", sans-serif;
+
+}
+
+#canvas{
+    border-color: black;
+    border-style: dashed;
+    margin-top: 100px;
+    background-color: rgba(245, 245, 245, 0.973);
+}
+
+.container{
+    height: 100%;
+    display: flex;
+}
+
+#toolbar{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 70px;
+    background-color: rgba(52, 95, 150, 0.479);
+    border-radius: 17px;
+    margin-top: 300px
+}
+
+#toolbar * {
+    margin-bottom: 6px;
+}
+
+#toolbar input{
+    width: 100%;
+}
+
+#toolbar button{
+    background-color: rgba(0, 4, 221, 0.26);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 2px;
+}
+
+#toolbar button:hover{
+    background-color: rgba(17, 0, 255, 0.74)
+}
+
+#drawing-board{
+    background-color: white;
+    width: 730px;
+    height: 730px ;
+    margin-left: 50px;
+}
