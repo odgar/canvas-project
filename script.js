@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-    playGedi();
+    playAll();
 });
 
 
 //function to play correct audio
-function playGedi() {
+function playAll() {
     var gedi = new Audio('assets/gedi.mp3');
+    var alarm = new Audio('assets/alarm.mp3');
     gedi.play();
+    alarm.play();
 };
 
 
