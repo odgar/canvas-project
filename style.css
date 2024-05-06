@@ -3,6 +3,7 @@ body{
     position: absolute;
     align-items: center;
     background-color: lightslategray;
+    animation: rainbow 8s infinite;
 }
 
 h1, h3 {
@@ -22,6 +23,28 @@ h1, h3 {
     background-color: white;
     width: 730px;
     height: 730px ;
-    margin-left: 50px;
-    border-color: black;
+    margin-left: 94px;
+}
+@keyframes rainbow {
+    0% {
+        background-color: red;
+    }
+    16.666% {
+        background-color: orange;
+    }
+    33.333% {
+        background-color: yellow;
+    }
+    50% {
+        background-color: green;
+    }
+    66.666% {
+        background-color: blue;
+    }
+    83.333% {
+        background-color: indigo;
+    }
+    100% {
+        background-color: violet;
+    }
 }
