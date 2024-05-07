@@ -1,29 +1,84 @@
-body{
-    height: 100%;
-    position: absolute;
+.nav{
+    width: auto;
+    height: 50px;
+    padding: 5px;
+    position: fixed;
+    top: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
     align-items: center;
-    background-color: lightslategray;
-    animation: rainbow 8s infinite;
+    justify-content: center;
+    background-color: rgba(245, 245, 245, 0.699);
+    border-radius: 4px;
 }
-
-h1, h3 {
+body{
+    animation: rainbow 13s infinite;
     font-family: "Oxygen", sans-serif;
 
 }
 
-.container{
-    height: 100%;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    text-align: center;
+.clr{
+    height: 35px;
+    width: 35px;
+    background-color: black;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: transform .5s;
+    margin: 3px;
+    font-family: "Oxygen", sans-serif;
+
 }
 
-#drawing-board{
+.clr:hover{
+    transform: scale(1.2);
+}
+
+
+.clr:nth-child(1){
+    background-color: black;
+}
+
+.clr:nth-child(2){
+    background-color: red;
+}
+
+.clr:nth-child(3){
+    background-color: orange;
+}
+
+.clr:nth-child(4){
+    background-color: yellow;
+}
+
+.clr:nth-child(5){
+    background-color: green;
+}
+
+.clr:nth-child(6){
+    background-color: yellowgreen;
+}
+
+.clr:nth-child(7){
+    background-color: blue;
+}
+
+.clr:nth-child(8){
+    background-color: purple ;
+}
+
+.clr:nth-child(9){
     background-color: white;
-    width: 730px;
-    height: 730px ;
-    margin-left: 94px;
+}
+
+button{
+    background-color: rgb(76, 214, 76);
+    color: white;
+    padding: 2px;
+    border: 3px solid white;
+    font-size: 15px;
+    font-weight: bold;
+
 }
 @keyframes rainbow {
     0% {

@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function playAll() {
     var gedi = new Audio('assets/gedi.mp3');
     var alarm = new Audio('assets/alarm.mp3');
+    var vsauce = new Audio('assets/vsauce.mp3');
+    vsauce.play();
     gedi.play();
     alarm.play();
 };
