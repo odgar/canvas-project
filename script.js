@@ -1,12 +1,18 @@
+// idk
+let penColor = "#000000"; // De pen color
+let brushSize = 5;//de pen size
+
+
 document.addEventListener('DOMContentLoaded', () => {
     playAll();
 });
+ 
 
 
 //function to play correct audio
 function playAll() {
     var gedi = new Audio('assets/gedi.mp3');
-    var alarm = new Audio('assets/alarm.mp3');
+   // var alarm = new Audio('assets/alarm.mp3');
     var vsauce = new Audio('assets/vsauce.mp3');
     vsauce.play();
     gedi.play();
@@ -14,77 +20,65 @@ function playAll() {
 };
 
 
-const canvas = document.getElementById("canvas");
-const body = document.querySelector("body");
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
 
-var theColor = '';
-var lineW = 5;
-let prevX = null;
-let prevY = null;
-let draw = false;
-
-body.style.backgroundColor = "#FFFFFF";
-var theInput = document.getElementById("favcolor");
-
-const ctx = canvas.getContext("2d");
-ctx.lineWidth = lineW;
-
-document.getElementById("ageInputId").onInputId = function(){
-draw = null;
-document.getElementById("ageInputId").value;
-document.getElementById("ageOutputId").innerHTML = lineW;
-ctx.lineWidth = lineW;
-};
-
-let clrs = document.querySelectorAll(".clr");
-clrs = Array.from(clrs);
-clrs.forEach(clr => {
-    clr.addEventListener("click", () => {
-        ctx.strokeStyle = clr.dataset.clr;
-    })
-})
-
-let clearBtn = document.querySelector(".clear");
-clearBtn.addEventListener("click", () => {
-    ctx.clearRect(0,0, canvas.width, canvas.height)
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let isDrawing = false;
+canvas.addEventListener("mousedown", () => {
+    isDrawing = true;
+    ctx.beginPath();
+    ctx.lineWidth = brushSize;
+    ctx.strokeStyle = penColor;
+    ctx.lineCap='round';
 });
-
-let SaceBtn = document.querySelector("save");
-saveBtn.addEventListener("click", () => {
-    let data = canvas.toDataURL("imag/png");
-    let a = document.createElement("a");
-    a.href = data;
-    a.download = "sketch.png";
-    a.click();
-});
-
-window.addEventListener("mousedown", (e) => draw = true);
-window.addEventListener("mouseup", (e) => draw = false);
-
-window.addEventListener("mousedown", (e) => {
-    if(prevX == null || prevY == null || !draw){
-        prevX = e.clientX;
-        prevY = e.clientY;
-        return
-    }
-
-    let currentX = e.clientX;
-    let currentY = e.clientY;
-
-    ctx.beginpath();
-    ctx.moveTo(prevX, prevY);
-    ctx.lineTo(currentX, currentY);
+canvas.addEventListener("mousemove", e => {
+    if(!isDrawing) return;
+    ctx.lineTo(e.offsetX, e.offsetY);
     ctx.stroke();
+    ctx.moveTo(e.offsetX, e.offsetY);
+});
+canvas.addEventListener("mouseup", () => {
+    isDrawing = false;
+    undoStack.push(canvas.toDataURL());
 
-    prevX = currentX;
-    prevY = currentY
+});
+
+    // Clear Canvas Button
+    const clearButton = document.getElementById('clearButton');
+    clearButton.addEventListener('click', () => {
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    });
+
+    // Undo Button
+const undoButton = document.getElementById('undo');
+undoButton.addEventListener('click', () => {
+    if (undoStack.length > 1) { redoStack.push(undoStack.pop()); 
+        const img = new Image();
+        img.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+        };
+        img.src = undoStack[undoStack.length - 1];
+    }
 });
 
 
+// Undo and Redo stacks
+let undoStack = [canvas.toDataURL()];
+let redoStack = [];
 
+const brushSizeInput = document.getElementById('brushSize');
+brushSizeInput.addEventListener('input', () => {
+    brushSize = brushSizeInput.value;
+});
 
+   // Pen color 
+   const penInput = document.getElementById('pen');
+   penInput.addEventListener('input', () => {
+    penColor = penInput.value;
+   });
 
+   //background of color input to match 
 
-
+   //const penInputBackgroubd
