@@ -79,6 +79,6 @@ brushSizeInput.addEventListener('input', () => {
     penColor = penInput.value;
    });
 
-   //background of color input to match 
+      // save
 
-   //const penInputBackgroubd
+const save = document.getElementById('save');
